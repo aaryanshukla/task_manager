@@ -1,21 +1,20 @@
-// sets up task struct/class 
+#ifndef TASKMANAGER_HPP
+#define TASKMANAGER_HPP
+
 #include <string>
+struct Tasks
+{
 
-namespace std { 
-    struct Tasks {
-    // what do we need 
+    std::string task_name;
 
-    // task name (String): 
-
-    string task_name;
-
-
-    // description of task: string
-
-    string task_description;
-
-    // completion of task: bool 
+    std::string task_description;
 
     bool task_complete;
-    }  
-} 
+
+    Tasks(std::string name, std::string description, bool complete)
+        : task_name(name), task_description(description), task_complete(complete) {}
+
+    std::string display_view();
+};
+
+#endif
