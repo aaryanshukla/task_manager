@@ -26,7 +26,7 @@ public:
 
     // function for reading task
 
-    void read_task(const std::string &name);
+    Tasks* read_task(const std::string &name);
 };
 
 #endif

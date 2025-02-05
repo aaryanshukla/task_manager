@@ -17,7 +17,6 @@ void TaskOperations::delete_task(const std::string& name) {
 void TaskOperations::update_task(const std::string &name, const std::string &description, const bool &complete) {
     for(auto it = task_list.begin(); it != task_list.end(); ++it) {
         if (it->task_name == name) {
-            it->task_name = name;
             it->task_description = description;
             it->task_complete = complete;
             return;
@@ -27,14 +26,11 @@ void TaskOperations::update_task(const std::string &name, const std::string &des
     std::cout << "Task not Found" << name << std::endl;
 }
 
-void TaskOperations::read_task(const std::string &name) {
-    for(auto it = task_list.begin(); it != task_list.end(); ++it) {
-        if (it->task_name == name) {
-            std::cout << name << '\n' <<  std::endl;
-            std::cout << it->task_description << '\n' << std::endl;
-            std::cout << it->task_complete << '\n' << std::endl;
+Tasks* TaskOperations::read_task(const std::string &name) {
+    for (auto &task : task_list) {
+        if (task.task_name == name) {
+            return &task; 
         }
-        
     }
-    std::cout << "Task not Found" << name << std::endl;
+    return nullptr;  
 }
